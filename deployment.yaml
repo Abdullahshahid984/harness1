@@ -1,0 +1,21 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: harness-aks-app
+  labels:
+    app: harness-aks-app
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: harness-aks-app
+  template:
+    metadata:
+      labels:
+        app: harness-aks-app
+    spec:
+      containers:
+        - name: harness-container
+          image: <your-acr-image>:latest
+          ports:
+            - containerPort: 80
